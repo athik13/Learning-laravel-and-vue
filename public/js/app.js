@@ -60334,6 +60334,20 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -60348,10 +60362,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['title', 'text'],
-    mounted: function mounted() {
-        console.log('Component mounted.');
+    data: function data() {
+        return {
+            posts: [],
+            errors: []
+        };
+    },
+    created: function created() {
+        var _this = this;
+
+        __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get("http://jsonplaceholder.typicode.com/posts").then(function (response) {
+            // JSON responses are automatically parsed.
+            _this.posts = response.data;
+        }).catch(function (e) {
+            _this.errors.push(e);
+        });
     }
 });
 
@@ -60363,23 +60391,54 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "card rounded mb-3" }, [
-    _c("img", {
-      staticClass: "card-img-top",
-      attrs: { src: "holder.js/100px180?random=yes", alt: "" }
-    }),
+  return _c("div", [
+    _vm.posts && _vm.posts.length
+      ? _c(
+          "div",
+          { staticClass: "row" },
+          _vm._l(_vm.posts, function(post) {
+            return _c("div", { staticClass: "col-md-3" }, [
+              _c("div", { staticClass: "card rounded mb-3" }, [
+                _c("img", {
+                  staticClass: "card-img-top",
+                  attrs: { src: "https://placeimg.com/480/270/any", alt: "" }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-body" }, [
+                  _c("h4", { staticClass: "card-title" }, [
+                    _vm._v(_vm._s(post.title))
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "card-text" }, [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(post.body) +
+                        "\n                    "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    { staticClass: "btn btn-primary", attrs: { href: "#" } },
+                    [_vm._v("Read More")]
+                  )
+                ])
+              ])
+            ])
+          })
+        )
+      : _vm._e(),
     _vm._v(" "),
-    _c("div", { staticClass: "card-body" }, [
-      _c("h4", { staticClass: "card-title" }, [_vm._v(_vm._s(_vm.title))]),
-      _vm._v(" "),
-      _c("p", { staticClass: "card-text" }, [
-        _vm._v("\n            " + _vm._s(_vm.text) + "\n        ")
-      ]),
-      _vm._v(" "),
-      _c("a", { staticClass: "btn btn-primary", attrs: { href: "#" } }, [
-        _vm._v("Read More")
-      ])
-    ])
+    _vm.errors && _vm.errors.length
+      ? _c(
+          "ul",
+          _vm._l(_vm.errors, function(error) {
+            return _c("li", [
+              _vm._v("\n            " + _vm._s(error.message) + "\n        ")
+            ])
+          })
+        )
+      : _vm._e()
   ])
 }
 var staticRenderFns = []
