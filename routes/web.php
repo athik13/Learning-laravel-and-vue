@@ -1,4 +1,5 @@
 <?php
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -11,11 +12,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+// Auth::routes();
+
+// Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/image', function (Request $request) {
+    $userAgent = $request->userAgent();
+    $ip = $request->ips();
+    dd($userAgent, $ip);
+    return view('image');
 });
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
