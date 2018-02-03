@@ -54,11 +54,13 @@
 
         </div>
     </nav>
-
-    @yield('content')
+    <div class="container" style="padding-top: 30px;">
+        @yield('content')
+    </div>
 </div>
 
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.4/holder.min.js" integrity="sha256-ifihHN6L/pNU1ZQikrAb7CnyMBvisKG3SUAab0F3kVU=" crossorigin="anonymous"></script>
 </body>
 </html>
