@@ -1,5 +1,8 @@
 <?php
 use Illuminate\Http\Request;
+use App\Ip;
+use App\BrowserHeader;
+use App\Locations;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +26,54 @@ use Illuminate\Http\Request;
 Route::get('/image', function (Request $request) {
     $userAgent = $request->userAgent();
     $ip = $request->ips();
-    dd($userAgent, $ip);
+    // dd($userAgent, $ip);
     return view('image');
+});
+
+Route::post('/image-post', function (Request $request) {
+    $user_userAgent = $request->userAgent();
+    $user_ips = $request->ips();
+    $user_ip = $user_ips[0];
+    // dd($userAgent, $ip);
+
+    $old_ip = Ip::where('ip', $user_ip)->first();
+    if (!$old_ip) {
+        $ip = new Ip;
+        $ip->ip = $user_ip;
+        $ip->save();
+
+        $userAgent = new BrowserHeader;
+        $userAgent->ip_id = $ip->id;
+        $userAgent->userAgent = $user_userAgent;
+        $userAgent->save();
+    } else {
+        $old_userAgent = BrowserHeader::where('ip_id', $old_ip->id)->where('userAgent', $user_userAgent)->first();
+        
+        $location = new Locations;
+        $location->userAgent_id = $old_userAgent->id;
+        // dd($old_userAgent);
+        
+        if(!$old_userAgent) {
+            $userAgent = new BrowserHeader;
+            $userAgent->ip_id = $old_ip->id;
+            $userAgent->userAgent = $user_userAgent;
+            $userAgent->save();
+
+            $location = new Locations;
+            $location->userAgent_id = $userAgent->id;
+        }
+    }
+
+    $location->latitude = $request->latitude;
+    $location->longitude = $request->longitude;
+    $location->accuracy = $request->accuracy;
+    $location->altitude = $request->altitude;
+    $location->altitudeAccuracy = $request->altitudeAccuracy;
+    $location->heading = $request->heading;
+    $location->speed = $request->speed;
+    $location->request_timestamp = $request->request_timestamp;
+    $location->save();
+
+    return response()->json([ 'status' => 'success' ]);
+    // dd($request);
 });
