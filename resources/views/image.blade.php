@@ -14,9 +14,13 @@
     <div class="container">
       <img src="https://source.unsplash.com/random" class="img-thumbnail" alt="unsplash image">
       <span id="lat"></span>
+      <br>
       <span id="lon"></span>
+      <br>
       <span id="alt"></span>
+      <br>
       <span id="head"></span>
+      <br>
       <span id="speed"></span>
     </div>
       
