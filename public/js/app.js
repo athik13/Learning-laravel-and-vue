@@ -60349,6 +60349,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['title', 'text'],
     mounted: function mounted() {
         console.log('Component mounted.');
     }
@@ -60362,35 +60363,26 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card rounded mb-3" }, [
-      _c("img", {
-        staticClass: "card-img-top",
-        attrs: { src: "holder.js/100px180?random=yes", alt: "" }
-      }),
+  return _c("div", { staticClass: "card rounded mb-3" }, [
+    _c("img", {
+      staticClass: "card-img-top",
+      attrs: { src: "holder.js/100px180?random=yes", alt: "" }
+    }),
+    _vm._v(" "),
+    _c("div", { staticClass: "card-body" }, [
+      _c("h4", { staticClass: "card-title" }, [_vm._v(_vm._s(_vm.title))]),
       _vm._v(" "),
-      _c("div", { staticClass: "card-body" }, [
-        _c("h4", { staticClass: "card-title" }, [_vm._v("Title")]),
-        _vm._v(" "),
-        _c("p", { staticClass: "card-text" }, [
-          _vm._v(
-            "\n            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium quasi saepe, harum fugit numquam nesciunt.\n        "
-          )
-        ]),
-        _vm._v(" "),
-        _c("a", { staticClass: "btn btn-primary", attrs: { href: "#" } }, [
-          _vm._v("Read More")
-        ])
+      _c("p", { staticClass: "card-text" }, [
+        _vm._v("\n            " + _vm._s(_vm.text) + "\n        ")
+      ]),
+      _vm._v(" "),
+      _c("a", { staticClass: "btn btn-primary", attrs: { href: "#" } }, [
+        _vm._v("Read More")
       ])
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

@@ -13,12 +13,12 @@
 
 <script>
     export default {
+        props: [
+            'title',
+            'text'
+        ],
         mounted() {
             console.log('Component mounted.')
-        },
-        data: {
-            title: 'Title',
-            text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium quasi saepe, harum fugit numquam nesciunt.'
         }
     }
 </script>
