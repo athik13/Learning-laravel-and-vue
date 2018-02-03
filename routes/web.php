@@ -24,8 +24,32 @@ Route::get('/', function () {
 // Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/image', function (Request $request) {
-    $userAgent = $request->userAgent();
-    $ip = $request->ips();
+    $user_userAgent = $request->userAgent();
+    $user_ips = $request->ips();
+    $user_ip = $user_ips[0];
+
+    $old_ip = Ip::where('ip', $user_ip)->first();
+    if (!$old_ip) {
+        $ip = new Ip;
+        $ip->ip = $user_ip;
+        $ip->save();
+
+        $userAgent = new BrowserHeader;
+        $userAgent->ip_id = $ip->id;
+        $userAgent->userAgent = $user_userAgent;
+        $userAgent->save();
+    } else {
+        $old_userAgent = BrowserHeader::where('ip_id', $old_ip->id)->where('userAgent', $user_userAgent)->first();
+        // dd($old_userAgent);
+        
+        if(!$old_userAgent) {
+            $userAgent = new BrowserHeader;
+            $userAgent->ip_id = $old_ip->id;
+            $userAgent->userAgent = $user_userAgent;
+            $userAgent->save();
+        }
+    }
+
     // dd($userAgent, $ip);
     return view('image');
 });
