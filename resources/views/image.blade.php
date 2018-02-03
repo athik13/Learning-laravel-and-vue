@@ -22,11 +22,14 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
     <script>
       $(function() {
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(showPosition);
-        } else { 
+        navigator.permissions &&
+        navigator.permissions.query({name: 'geolocation'}).then(function(PermissionStatus) {
+          if('granted' === PermissionStatus.state) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+          } else {
             console.log("Geolocation is not supported by this browser.");
-        }
+          }
+        })
       });
 
       function showPosition(position) {
