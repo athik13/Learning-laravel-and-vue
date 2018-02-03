@@ -11,7 +11,9 @@
   </head>
   <body>
 
-    <img src="https://source.unsplash.com/random" class="img-thumbnail" alt="unsplash image">
+    <div class="container">
+      <img src="https://source.unsplash.com/random" class="img-thumbnail" alt="unsplash image">
+    </div>
       
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
