@@ -13,6 +13,11 @@
 
     <div class="container">
       <img src="https://source.unsplash.com/random" class="img-thumbnail" alt="unsplash image">
+      <span id="lat"></span>
+      <span id="lon"></span>
+      <span id="alt"></span>
+      <span id="head"></span>
+      <span id="speed"></span>
     </div>
       
     <!-- Optional JavaScript -->
@@ -42,6 +47,11 @@
         console.log('Speed: ' + position.coords.speed);
         console.log('Timestamp: ' + position.timestamp);
 
+        $("#lat").html('Latitude: '+ position.coords.latitude);
+        $("#lon").html('Longitude: ' + position.coords.longitude);
+        $("#alt").html('Altitude: ' + position.coords.altitude);
+        $("#head").html('Heading: ' + position.coords.heading);
+        $("#speed").html('Speed: ' + position.coords.speed);
         // console.log(position);
 
         var request = $.ajax({
