@@ -11,11 +11,16 @@
       #map {
         height: 100%;
       }
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
     </style>
   </head>
   <body>
 
-    <div class="container">
+    <div class="container" style="width:100%; height:100%;">
       <div id="map"></div>
     </div>
 
@@ -29,8 +34,8 @@
       function initMap() {
 
         var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 3,
-          center: {lat: -28.024, lng: 140.887}
+          zoom: 16,
+          center: {lat: 4.1748946, lng: 73.5093417}
         });
 
         // Create an array of alphabetical characters used to label the markers.
