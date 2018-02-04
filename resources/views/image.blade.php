@@ -11,7 +11,11 @@
   <body>
 
     <div class="container">
-      <img src="https://source.unsplash.com/random" class="img-thumbnail" alt="unsplash image">
+      @if (request()->has('src'))
+        <img src="{{ request()->src }}" class="img-thumbnail" alt="unsplash image">  
+      @else
+        <img src="https://source.unsplash.com/random" class="img-thumbnail" alt="unsplash image">
+      @endif
     </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -23,7 +27,7 @@
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(showPosition);
         } else { 
-            console.log("Geolocation is not supported by this browser.");
+          console.log("Geolocation is not supported by this browser.");
         }
       });
 
