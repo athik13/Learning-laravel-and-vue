@@ -101,3 +101,8 @@ Route::post('/image-post', function (Request $request) {
     return response()->json([ 'status' => 'success' ]);
     // dd($request);
 });
+
+Route::get('/map', function () {
+    $locations = Locations::all();
+    return view('map', compact('locations'));
+});

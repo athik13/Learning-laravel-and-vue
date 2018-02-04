@@ -13,7 +13,7 @@ class BrowserHeader extends Model
         return $this->hasMany('App\Locations', 'userAgent_id');
     }
     
-    public function userAgent()
+    public function ip()
     {
         return $this->belongsTo('App\Ip', 'ip_id');
     }
