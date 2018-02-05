@@ -106,3 +106,8 @@ Route::get('/map', function () {
     $locations = Locations::all();
     return view('tracking.map.index', compact('locations'));
 });
+
+Route::get('/ip', function () {
+    $ips = Ip::all();
+    return view('tracking.ip.index', compact('ips'));
+});
