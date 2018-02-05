@@ -5,6 +5,13 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
+            <h3>Browser Visits</h3>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
             <table class="table table-bordered table-responsive">
                 <thead class="thead-default">
                     <tr>
