@@ -107,7 +107,7 @@ Route::get('/map', function () {
     return view('tracking.map.index', compact('locations'));
 });
 
-Route::get('/ip', function () {
-    $ips = Ip::all();
-    return view('tracking.ip.index', compact('ips'));
+Route::get('/browser', function () {
+    $browserAgents = BrowserHeader::all();
+    return view('tracking.ip.index', compact('browserAgents'));
 });
