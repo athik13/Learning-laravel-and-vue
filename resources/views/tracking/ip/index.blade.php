@@ -30,7 +30,9 @@
                         @if ($userAgent->latestLocation)
                             <td>{{ $userAgent->latestLocation->created_at->diffForHumans() }}</td>
                         @else
-                            <td>-</td>
+                            <td>
+                                <center>-</center>
+                            </td>
                         @endif
                         
                         <td>{{ $userAgent->created_at->diffForHumans() }}</td>
