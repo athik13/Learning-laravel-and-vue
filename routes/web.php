@@ -108,6 +108,6 @@ Route::get('/map', function () {
 });
 
 Route::get('/browser', function () {
-    $browserAgents = BrowserHeader::all();
-    return view('tracking.ip.index', compact('browserAgents'));
+    $userAgents = BrowserHeader::all();
+    return view('tracking.ip.index', compact('userAgents'));
 });

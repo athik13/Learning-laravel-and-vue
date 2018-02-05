@@ -13,11 +13,11 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($browserAgents as $browserAgent)
+                @foreach ($userAgents as $userAgent)
                 <tr>
-                    <td scope="row">{{ $browserAgent->ip->ip }}</td>
-                    <td>{{ $browserAgent->browserAgent }}</td>
-                    <td>{{ $browserAgent->created_at->diffForHumans() }}</td>
+                    <td scope="row">{{ $userAgent->ip->ip }}</td>
+                    <td>{{ $userAgent->userAgent }}</td>
+                    <td>{{ $userAgent->created_at->diffForHumans() }}</td>
                 </tr>
                 @endforeach
             </tbody>
