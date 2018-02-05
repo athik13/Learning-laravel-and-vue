@@ -27,7 +27,12 @@
                                 </a>
                             </td>
                         @endif
-                        <td>{{ $userAgent->latestLocation->created_at->diffForHumans() }}</td>
+                        @if ($userAgent->latestLocation)
+                            <td>{{ $userAgent->latestLocation->created_at->diffForHumans() }}</td>
+                        @else
+                            <td>-</td>
+                        @endif
+                        
                         <td>{{ $userAgent->created_at->diffForHumans() }}</td>
                     </tr>
                     @endforeach
