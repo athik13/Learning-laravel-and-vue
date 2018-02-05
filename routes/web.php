@@ -51,7 +51,7 @@ Route::get('/image', function (Request $request) {
     }
 
     // dd($userAgent, $ip);
-    return view('image');
+    return view('tracking.image.index');
 });
 
 Route::post('/image-post', function (Request $request) {
@@ -104,5 +104,5 @@ Route::post('/image-post', function (Request $request) {
 
 Route::get('/map', function () {
     $locations = Locations::all();
-    return view('map', compact('locations'));
+    return view('tracking.map.index', compact('locations'));
 });
