@@ -101,7 +101,7 @@ Route::post('/image-post', function (Request $request) {
 });
 
 Route::get('/browser', function () {
-    $userAgents = BrowserHeader::all();
+    $userAgents = BrowserHeader::with('latestLocation')->get();
     return view('tracking.ip.index', compact('userAgents'));
 });
 

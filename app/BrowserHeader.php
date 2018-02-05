@@ -17,4 +17,9 @@ class BrowserHeader extends Model
     {
         return $this->belongsTo('App\Ip', 'ip_id');
     }
+
+    public function latestLocation()
+    {
+        return $this->hasOne('App\Locations', 'userAgent_id')->latest();
+    }
 }

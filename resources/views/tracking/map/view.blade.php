@@ -27,7 +27,7 @@
         <div class="col-md-8">
           <div id="map"></div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-4">
           <table class="table table-hover table-responsive">
             <thead>
               <tr>
@@ -35,6 +35,7 @@
                 <th>Latitude</th>
                 <th>Longitude</th>
                 <th>Altitude</th>
+                <th>Created at</th>
               </tr>
             </thead>
             <tbody>
@@ -44,6 +45,7 @@
                 <td>{{ $location->latitude }}</td>
                 <td>{{ $location->longitude }}</td>
                 <td>{{ $location->altitude }}</td>
+                <td>{{ $location->created_at->diffForHumans() }}</td>
               </tr>
               @endforeach
             </tbody>
