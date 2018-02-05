@@ -10,8 +10,8 @@
                     <tr>
                         <th>Ip</th>
                         <th>Browser Agent</th>
-                        <th>Last Location</th>
-                        <th>Created At</th>
+                        <th>Last Location Update</th>
+                        <th>First Visit</th>
                     </tr>
                 </thead>
                 <tbody>
