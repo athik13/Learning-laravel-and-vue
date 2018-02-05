@@ -17,6 +17,13 @@
 
     <div class="container-fluid">
       <div class="row">
+        <div class="col-md-12">
+          <center>
+            <h5>Browser: {{ $userAgent->userAgent }} - IP: {{ $userAgent->ip->ip }}</h5>
+          </center>
+        </div>
+      </div>
+      <div class="row">
         <div class="col-md-8">
           <div id="map"></div>
         </div>
