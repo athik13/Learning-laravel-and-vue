@@ -15,9 +15,7 @@ use App\Locations;
 |
 */
 
-Route::get('/', function () {
-    return redirect('/image');
-});
+Route::redirect('/', '/image');
 
 // Auth::routes();
 
@@ -102,12 +100,13 @@ Route::post('/image-post', function (Request $request) {
     // dd($request);
 });
 
-Route::get('/map', function () {
-    $locations = Locations::all();
-    return view('tracking.map.index', compact('locations'));
-});
-
 Route::get('/browser', function () {
     $userAgents = BrowserHeader::all();
     return view('tracking.ip.index', compact('userAgents'));
+});
+
+Route::get('map/{id}', function ($id) {
+    $userAgent = BrowserHeader::with('ip')->with('locations')->find($id);
+    // return $userAgent;
+    return view('tracking.map.view', compact('userAgent'));
 });

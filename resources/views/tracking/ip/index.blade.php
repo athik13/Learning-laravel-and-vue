@@ -16,7 +16,15 @@
                 @foreach ($userAgents as $userAgent)
                 <tr>
                     <td scope="row">{{ $userAgent->ip->ip }}</td>
-                    <td>{{ $userAgent->userAgent }}</td>
+                    @if ($userAgent->locations->isEmpty())
+                        <td>{{ $userAgent->userAgent }}</td>
+                    @else
+                        <td>
+                            <a href='{{ url("map/".$userAgent->id) }}'>
+                                {{ $userAgent->userAgent }}
+                            </a>
+                        </td>
+                    @endif
                     <td>{{ $userAgent->created_at->diffForHumans() }}</td>
                 </tr>
                 @endforeach
