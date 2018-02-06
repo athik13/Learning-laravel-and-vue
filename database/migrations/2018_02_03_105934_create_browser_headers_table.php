@@ -16,7 +16,7 @@ class CreateBrowserHeadersTable extends Migration
         Schema::create('browser_headers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('ip_id')->nullable();
-            $table->string('userAgent')->nullable();
+            $table->longtext('userAgent')->nullable();
             $table->timestamps();
         });
     }
